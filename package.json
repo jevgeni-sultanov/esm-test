@@ -14,7 +14,7 @@
   "exports": {
     ".": {
       "require": "./dist/PDFViewer.cjs",
-      "import": "./dist/PDFViewer.mjs",
+      "import": "./dist/PDFViewer.mjs"
     }
   },
   "files": [
