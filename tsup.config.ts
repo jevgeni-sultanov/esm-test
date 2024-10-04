@@ -9,13 +9,16 @@ export default defineConfig({
         return { js: ".cjs" };
       case "esm":
         return { js: ".mjs" };
+      case "iife":
+        return { js: ".iife.js" };
       default:
         return {};
     }
   },
-  format: ["cjs", "esm"],
+  format: ["cjs", "esm", "iife"],
   splitting: false,
   bundle: true,
+  minify: true,
   dts: true,
   loader: {
     ".html": "text",

@@ -16,7 +16,7 @@ offering features such as document loading via URL or base64 encoded strings.
 
 ```html
 <div id="id"></div>
-<script src="./dist/PDFViewer.iife.js"></script>
+<script type="module" src="./dist/PDFViewer.mjs"></script>
 <script>
     const viewer = new PDFViewer({
         container: document.getElementById("id"),
