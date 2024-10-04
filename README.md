@@ -26,17 +26,7 @@ offering features such as document loading via URL or base64 encoded strings.
 </script>
 ```
 
-### CommonJS
-
-```javascript
-const { PDFViewer } = require("pdf-generator-api-pdfviewer");
-
-const viewer = new PDFViewer({
-  container: document.getElementById("id"),
-});
-```
-
-### ES Module
+### ECMAScript module
 
 ```javascript
 import { PDFViewer } from "pdf-generator-api-pdfviewer";
@@ -44,6 +34,20 @@ import { PDFViewer } from "pdf-generator-api-pdfviewer";
 const viewer = new PDFViewer({
   container: document.getElementById("id"),
 });
+
+viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf");
+```
+
+### CommonJS
+
+```javascript
+const PDFViewer = require("pdf-generator-api-pdfviewer");
+
+const viewer = new PDFViewer({
+  container: document.getElementById("id"),
+});
+
+viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf");
 ```
 
 ### Typescript
@@ -54,6 +58,8 @@ import { PDFViewer } from "pdf-generator-api-pdfviewer";
 const viewer = new PDFViewer({
   container: document.getElementById("id") as HTMLElement,
 });
+
+viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf");
 ```
 
 ## Loading PDF documents

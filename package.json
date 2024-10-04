@@ -1,21 +1,27 @@
 {
-  "name": "pdf-generator-api-pdfviewer",
+  "name": "jevgeni-sultanov-lib",
   "author": "PDF Generator API",
-  "repository": "pdfgeneratorapi/pdfviewer",
+  "repository": "jevgeni-sultanov/lib",
   "version": "1.0.0",
-  "description": "PDF viewer by PDF Generator API",
-  "main": "./dist/PDFViewer.global.js",
+  "description": "Lib",
+  "main": "./dist/PDFViewer.cjs",
+  "module": "./dist/PDFViewer.mjs",
+  "browser": "./dist/PDFViewer.iife.js",
+  "types": "./dist/PDFViewer.d.ts",
   "scripts": {
     "build": "tsup",
     "build:docker": "docker build . --output ."
   },
   "exports": {
     ".": {
-      "types": "./dist/PDFViewer.d.ts",
-      "require": "./dist/PDFViewer.js",
-      "import": "./dist/PDFViewer.mjs"
+      "require": "./dist/PDFViewer.cjs",
+      "import": "./dist/PDFViewer.mjs",
+      "default": "./dist/PDFViewer.iife.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
