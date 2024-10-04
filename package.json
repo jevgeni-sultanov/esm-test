@@ -6,7 +6,6 @@
   "description": "Lib",
   "main": "./dist/PDFViewer.cjs",
   "module": "./dist/PDFViewer.mjs",
-  "browser": "./dist/PDFViewer.iife.js",
   "types": "./dist/PDFViewer.d.ts",
   "scripts": {
     "build": "tsup",
@@ -16,7 +15,6 @@
     ".": {
       "require": "./dist/PDFViewer.cjs",
       "import": "./dist/PDFViewer.mjs",
-      "default": "./dist/PDFViewer.iife.js"
     }
   },
   "files": [
