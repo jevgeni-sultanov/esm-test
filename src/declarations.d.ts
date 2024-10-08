@@ -1,4 +1,4 @@
-import { PDFViewer } from "./PDFViewer";
+import type { PDFViewer } from "./PDFViewer";
 
 declare global {
   interface Window {

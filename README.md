@@ -1,30 +1,27 @@
 # PDF viewer by PDF Generator API
 
-[PDFViewer](http://pdfviewer.com/) is a library to display and interact with PDF documents in web applications, 
-offering features such as document loading via URL or base64 encoded strings.
+[PDFViewer](http://pdfviewer.com/) is a library to display and interact with PDF documents in web applications,
+offering features such as document loading via URL and base64 encoded strings.
+
+![PDF Viewer](https://pdfgeneratorapi-web-assets.s3.amazonaws.com/images/pdfviewer-example.png)
 
 ## Installing PDFViewer
 
 ### npm
-    $ npm install pdfgeneratorapi/pdfviewer
+    $ npm install pdf-generator-api-pdfviewer
 ### yarn
-    $ yarn add pdfgeneratorapi/pdfviewer
+    $ yarn add pdf-generator-api-pdfviewer
 
 ## Using PDFViewer
 
-### Inline
+### API
+* `loadUrl(string)` - load PDF from an URL
+* `loadBase64(string)` - load PDF from a base64 encoded string
+* `setOptions(object)` - update options
+  * `print`: boolean - enable print button
+  * `download`: boolean - enable download button
+  * `upload`: boolean - enable upload file button
 
-```html
-<div id="id"></div>
-<script type="module" src="./dist/PDFViewer.mjs"></script>
-<script>
-    const viewer = new PDFViewer({
-        container: document.getElementById("id"),
-    });
-
-    viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf");
-</script>
-```
 
 ### ECMAScript module
 
@@ -32,7 +29,7 @@ offering features such as document loading via URL or base64 encoded strings.
 import { PDFViewer } from "pdf-generator-api-pdfviewer";
 
 const viewer = new PDFViewer({
-  container: document.getElementById("id"),
+  container: document.getElementById("viewer-container"),
 });
 
 viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf");
@@ -44,22 +41,26 @@ viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/exampl
 const PDFViewer = require("pdf-generator-api-pdfviewer");
 
 const viewer = new PDFViewer({
-  container: document.getElementById("id"),
+  container: document.getElementById("viewer-container"),
 });
 
 viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf");
 ```
 
-### Typescript
+### CDN
 
-```typescript
-import { PDFViewer } from "pdf-generator-api-pdfviewer";
+```html
+<div id="id"></div>
+<script src="https://unpkg.com/pdf-generator-api-pdfviewer@latest/dist/PDFViewer.iife.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const viewer = new PDFViewer({
+      container: document.getElementById("id"),
+    });
 
-const viewer = new PDFViewer({
-  container: document.getElementById("id") as HTMLElement,
-});
-
-viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf");
+    viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf");
+  });
+</script>
 ```
 
 ## Loading PDF documents
@@ -70,7 +71,7 @@ The PDF Viewer library loads documents from various sources:
 
 ```typescript
 const viewer = new PDFViewer({
-  container: document.getElementById("id"),
+  container: document.getElementById("viewer-container"),
 })
 
 viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf");
@@ -80,10 +81,11 @@ viewer.loadUrl("https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/exampl
 
 ```typescript
 const viewer = new PDFViewer({
-  container: document.getElementById("id"),
+  container: document.getElementById("viewer-container"),
 })
 
-const base64encodedPdf = "JVBERi0xLjcKCjEgMCBvYmogICUgZW50cnkgcG9pbnQKPDwKICAvVHlwZSAvQ2F0YWxvZwog" +
+const base64encodedPdf =
+  "JVBERi0xLjcKCjEgMCBvYmogICUgZW50cnkgcG9pbnQKPDwKICAvVHlwZSAvQ2F0YWxvZwog" +
   "IC9QYWdlcyAyIDAgUgo+PgplbmRvYmoKCjIgMCBvYmoKPDwKICAvVHlwZSAvUGFnZXMKICAv" +
   "TWVkaWFCb3ggWyAwIDAgMjAwIDIwMCBdCiAgL0NvdW50IDEKICAvS2lkcyBbIDMgMCBSIF0K" +
   "Pj4KZW5kb2JqCgozIDAgb2JqCjw8CiAgL1R5cGUgL1BhZ2UKICAvUGFyZW50IDIgMCBSCiAg" +
@@ -109,7 +111,7 @@ viewer.loadBase64(base64encodedPdf);
 import { PDFViewer } from "pdf-generator-api-pdfviewer";
 
 const viewer = new PDFViewer({
-  container: document.getElementById("id") as HTMLElement,
+  container: document.getElementById("viewer-container") as HTMLElement,
 })
 
 viewer.setOptions({
